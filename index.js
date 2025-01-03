@@ -8,15 +8,20 @@ const PORT = 4000
 const tasks = [
     {
         id : 1,
-        task : "complete project"
+        task : "complete project",
+        completed : true,
     },
     {
         id : 2,
-        task : "push github"
+        task : "push github",
+        completed : false,
+
     },
     {
         id : 3,
-        task : "diploy vercel"
+        task : "diploy vercel",
+        completed : true,
+
     }
 ]
 
@@ -31,21 +36,33 @@ function middleware(req,res,next){
 app.use(express.json())
 app.use(middleware)
 
-app.get("/",(req,res)=>{
-    console.log("req.requestBy=>",req.requestBy);
-    res.status(200).send(tasks);
-})
-app.use("/user",userRoutes)
-// app.post("/",(req,res)=>{
-//     console.log("req.body=>",req.body)
-    
-//     res.send("Post request called succesfully");
-// })
-// app.put("/",(req,res)=>{
-//     res.send("Put request called succesfully");
-// })
-// app.delete("/",(req,res)=>{
-//     res.send("Deleted request called succesfully");
-// })
 
-app.listen(PORT , ()=> console.log("Sesrver is running on port" + PORT))
+
+
+// params 
+app.get("/singleTask/:id",(req,res) => {
+const task = tasks.find((data) => data.id == req.params.id)
+if(!task)
+    {return res.status(404).send("task not found")}
+   else   
+   {return res.status(200).send(task)}
+    
+})
+
+// query 
+app.get("/",(req,res)=>{
+    console.log("req.query=>",req.query)
+    const {completed} = req.query
+    let filter = tasks
+    if(completed)   
+        filter=tasks.filter((data) => 
+   completed == 4 ? data.completed == true : datacomplted = false)
+    res.status(200).send(filter);
+})
+
+
+
+
+
+app.use("/user",userRoutes)
+app.listen(PORT , ()=> console.log("Server is running on port" + PORT))
