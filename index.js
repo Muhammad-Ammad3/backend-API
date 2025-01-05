@@ -50,13 +50,13 @@ if(!task)
 })
 
 // query 
-app.get("/",(req,res)=>{
+app.get("/",(req,res) => {
     console.log("req.query=>",req.query)
-    const {completed} = req.query
-    let filter = tasks
+    const {completed} = req.query;
+    let filter = tasks;
     if(completed)   
-        filter=tasks.filter((data) => 
-   completed == 4 ? data.completed == true : datacomplted = false)
+        filter = tasks.filter((data) => 
+   completed == "true" ? data.completed == true : data.completed == false);
     res.status(200).send(filter);
 })
 
