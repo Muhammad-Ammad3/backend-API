@@ -23,7 +23,7 @@ app.use(morgan("tiny"));
 app.use(express.json()); 
 
 app.use("/task", taskRoutes);
-app.use("/user", userRoutes); 
+app.use("/user", userRoutes);
 app.use("/auth", authRoutes); 
 
 app.listen(PORT, () => {
