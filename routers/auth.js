@@ -1,9 +1,9 @@
 import express from "express";
-import User from "../../models/User.js";
+import User from "../models/User.js";
 import Joi from "joi";
 import bcrypt from "bcrypt";
 import "dotenv/config";
-import sendResponse from "../../helpers/sendResponse.js";
+import sendResponse from "../helpers/sendResponse.js";
 import  jwt  from "jsonwebtoken";
 const router = express.Router();
 

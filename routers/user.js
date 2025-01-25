@@ -1,8 +1,8 @@
 import express from "express";
-import sendResponse from "../../helpers/sendResponse.js";
+import sendResponse from "../helpers/sendResponse.js";
 import jwt  from "jsonwebtoken";
 import "dotenv/config";
-import { authenticationUser } from "../../middleware/authentication.js";
+import { authenticationUser } from "../middleware/authentication.js";
 
 
 const router = express.Router()
